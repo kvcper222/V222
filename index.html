@@ -3,33 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>V222</title>
+<title>V222 Effect</title>
 <style>
   html, body {
     height: 100%;
     margin: 0;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: black;
     font-family: Arial Black, Gadget, sans-serif;
     font-weight: 900;
-    font-size: 25vw;
+    font-size: 20vw;
     color: white;
     cursor: pointer;
-    background-color: black;
-    transition: background-color 0s;
+    position: relative;
+  }
+
+  .glitch-bar {
+    position: absolute;
+    width: 100%;
+    height: 5%;
+    background-color: white;
+    top: 0;
+    left: 0;
+    opacity: 0;
   }
 </style>
 </head>
 <body onclick="window.open('https://instagram.com/kvcper222', '_blank')">
-  V222
+  <div id="displayText">KVCPER222</div>
 
 <script>
-  let isBlack = true;
-  setInterval(() => {
-    document.body.style.backgroundColor = isBlack ? 'white' : 'black';
-    isBlack = !isBlack;
-  }, 50); // zmienia tło co 50ms → bardzo szybkie miganie
+const text = document.getElementById('displayText');
+
+// Lista zmian napisów
+const texts = ['KVCPER222', 'V222', 'CHANGE222'];
+let textIndex = 0;
+
+// Funkcja zmiany napisu co kilka sekund
+setInterval(() => {
+  textIndex = (textIndex + 1) % texts.length;
+  text.textContent = texts[textIndex];
+}, 2000);
+
+// Funkcja losowych pasków
+function glitchBar() {
+  const bar = document.createElement('div');
+  bar.classList.add('glitch-bar');
+  bar.style.top = Math.random() * 100 + '%';
+  bar.style.height = 2 + Math.random() * 10 + '%';
+  bar.style.opacity = 0.8;
+  document.body.appendChild(bar);
+
+  setTimeout(() => {
+    bar.remove();
+  }, 50); // krótko, szybki pasek
+}
+
+// Co 100ms losowo pojawia się pasek, by wyglądało to jak zepsuty ekran
+setInterval(() => {
+  if (Math.random() < 0.3) glitchBar();
+}, 100);
 </script>
 </body>
 </html>
