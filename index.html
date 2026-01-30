@@ -11,21 +11,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: black;
     font-family: Arial Black, Gadget, sans-serif;
     font-weight: 900;
-    font-size: 12vw;
+    font-size: 25vw; /* ogromny napis na cały ekran */
     color: white;
     cursor: pointer;
-    animation: flash 0.05s infinite alternate; /* ekstremalnie szybkie miganie tła */
+    animation: strobe 0.03s infinite alternate; /* ekstremalnie szybkie miganie tła */
   }
 
-  @keyframes flash {
+  @ keyframes strobe {
     0% { background-color: black; }
-    100% { background-color: white; }
+    50% { background-color: white; }
+    100% { background-color: black; }
   }
 </style>
 </head>
 <body onclick="window.open('https://instagram.com/kvcper222', '_blank')">
-  KVCPER222
+  V222
 </body>
 </html>
