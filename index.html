@@ -11,23 +11,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
     font-family: Arial Black, Gadget, sans-serif;
     font-weight: 900;
-    font-size: 25vw; /* ogromny napis na cały ekran */
+    font-size: 25vw;
     color: white;
     cursor: pointer;
-    animation: strobe 0.03s infinite alternate; /* ekstremalnie szybkie miganie tła */
-  }
-
-  @ keyframes strobe {
-    0% { background-color: black; }
-    50% { background-color: white; }
-    100% { background-color: black; }
+    background-color: black;
+    transition: background-color 0s;
   }
 </style>
 </head>
 <body onclick="window.open('https://instagram.com/kvcper222', '_blank')">
   V222
+
+<script>
+  let isBlack = true;
+  setInterval(() => {
+    document.body.style.backgroundColor = isBlack ? 'white' : 'black';
+    isBlack = !isBlack;
+  }, 50); // zmienia tło co 50ms → bardzo szybkie miganie
+</script>
 </body>
 </html>
